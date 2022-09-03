@@ -20,11 +20,19 @@ commands:
   hub:
     description: teleports you to hub
     usage: /hub
+    permission: hub.use
   spawn:
     description: teleports you to hub
     usage: /spawn
+    permission: spawn.use
 
 permissions:
+  hub.use:
+    default: false
+    description: permission to teleport to hub
+  spawn.use:
+    default: false
+    description: permission to teleport to spawn
   setspawn.create:
     default: op
     description: permission to create spawn
