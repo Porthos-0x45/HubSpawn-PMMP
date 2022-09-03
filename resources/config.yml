@@ -1,0 +1,15 @@
+allowed_worlds:
+  - "world"
+  - "kitpvp"
+
+spawn:
+  world: "world"
+  posX: 0
+  posY: 0
+  posZ: 0
+
+hub:
+  world: "world"
+  posX: 0
+  posY: 0
+  posZ: 0

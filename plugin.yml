@@ -1,0 +1,35 @@
+---
+name: HubSpawn
+main: Pixel\HubSpawn\core\Main
+descritpion: SetSpawn for your server
+version: 0.1.0
+api:
+  - 4.0.0
+
+author: Px1L
+
+commands:
+  sethub:
+    description: Sets hub
+    permission: sethub.create
+    usage: /sethub
+  setspawn:
+    description: sets spawn
+    permission: setspawn.create
+    usage: /setspawn
+  hub:
+    description: teleports you to hub
+    usage: /hub
+  spawn:
+    description: teleports you to hub
+    usage: /spawn
+
+permissions:
+  setspawn.create:
+    default: op
+    description: permission to create spawn
+  sethub.create:
+    default: op
+    description: permission to create hub
+---
+
