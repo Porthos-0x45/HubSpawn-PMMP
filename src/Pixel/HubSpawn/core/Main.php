@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pixel\AntiVoid\Core;
+namespace Pixel\HubSpawn\Core;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -36,14 +36,11 @@ class Main extends PluginBase
 
         $def_wrlds = ["kitpvp", "sumo"];
 
-        if ($sender instanceof Player)
-        {
+        if ($sender instanceof Player) {
             $player = $this->getServer()->getPlayerByPrefix($sender->getName());
-            
-            if ($cmd->getName() == "setspawn")
-            {
-                if (!($player->hasPermission("setspawn.create")))
-                {
+
+            if ($cmd->getName() == "setspawn") {
+                if (!($player->hasPermission("setspawn.create"))) {
                     $player->sendMessage($nocmd);
                     return true;
                 }
@@ -60,10 +57,8 @@ class Main extends PluginBase
                 $player->sendMessage(TextFormat::GREEN . "Congrats you have successfuly set spawn position.");
             }
 
-            if ($cmd->getName() == "sethub")
-            {
-                if (!($player->hasPermission("sethub.create")))
-                {
+            if ($cmd->getName() == "sethub") {
+                if (!($player->hasPermission("sethub.create"))) {
                     $player->sendMessage($nocmd);
                     return true;
                 }
@@ -81,19 +76,13 @@ class Main extends PluginBase
             }
 
 
-            if ($cmd->getName() == "spawn")
-            {
-                if ($this->config->exists("allowed_worlds"))
-                {
-                    foreach($this->config->get("allowed_worlds") as $allowed)
-                    {
-                        if ($player->getWorld() == $allowed)
-                        {
+            if ($cmd->getName() == "spawn") {
+                if ($this->config->exists("allowed_worlds")) {
+                    foreach ($this->config->get("allowed_worlds") as $allowed) {
+                        if ($player->getWorld() == $allowed) {
                             $player->sendMessage($nowrld);
                             return true;
-                        }
-                        else
-                        {
+                        } else {
                             $pos_spawn = new Position(
                                 $this->config->getNested("spawn")["posX"],
                                 $this->config->getNested("spawn")["posX"],
@@ -105,26 +94,18 @@ class Main extends PluginBase
                             $player->teleport($pos_spawn);
                         }
                     }
-                }
-                else
-                {
+                } else {
                     $this->config->set("allowed_worlds", $def_wrlds);
                 }
             }
 
-            if ($cmd->getName() == "hub")
-            {
-                if ($this->config->exists("allowed_worlds"))
-                {
-                    foreach($this->config->get("allowed_worlds") as $allowed)
-                    {
-                        if ($player->getWorld() == $allowed)
-                        {
+            if ($cmd->getName() == "hub") {
+                if ($this->config->exists("allowed_worlds")) {
+                    foreach ($this->config->get("allowed_worlds") as $allowed) {
+                        if ($player->getWorld() == $allowed) {
                             $player->sendMessage($nowrld);
                             return true;
-                        }
-                        else
-                        {
+                        } else {
                             $pos_hub = new Position(
                                 $this->config->getNested("hub")["posX"],
                                 $this->config->getNested("hub")["posX"],
@@ -136,15 +117,11 @@ class Main extends PluginBase
                             $player->teleport($pos_hub);
                         }
                     }
-                }
-                else
-                {
+                } else {
                     $this->config->set("allowed_worlds", $def_wrlds);
                 }
             }
-        }
-        else
-        {
+        } else {
             $sender->sendMessage(TextFormat::RED . "You have to use this command in game!");
         }
 
